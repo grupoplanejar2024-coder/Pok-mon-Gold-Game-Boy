@@ -353,7 +353,6 @@
 
         /* Tela ampliada no celular vertical */
         @media screen and (max-width: 768px) {
-
             #game-container {
                 width: 100vw;
                 height: 100vh;
@@ -384,7 +383,6 @@
 
         /* Celular horizontal */
         @media screen and (max-width: 768px) and (orientation: landscape) {
-
             #game-container {
                 width: 100vw;
                 height: 100dvh;
@@ -407,7 +405,6 @@
 
         /* Telas menores */
         @media (max-width: 400px) {
-
             .gb-cart-body {
                 transform: scale(0.9) translateZ(20px);
             }
@@ -447,7 +444,7 @@
                     <div class="gb-label-sticker">
                         <div class="gb-sticker-art">
                             <img
-                                src="4304682-pokemon-gold-version-game-boy-color-front-cover.jpg"
+                                src="./4304682-pokemon-gold-version-game-boy-color-front-cover.jpg"
                                 alt="Capa Pokémon Gold Version"
                             >
                         </div>
@@ -497,8 +494,8 @@
                 <button type="button" class="emu-btn" id="back-btn">← Voltar</button>
             </div>
             <div class="emu-bar-group">
-                <button type="button" class="emu-btn" data-core="gbc">Core: GBC</button>
                 <button type="button" class="emu-btn" data-core="gambatte">Core: Gambatte</button>
+                <button type="button" class="emu-btn" data-core="gbc">Core: GBC</button>
                 <button type="button" class="emu-btn" data-core="mgba">Core: mGBA</button>
             </div>
         </div>
@@ -534,13 +531,16 @@
             cartridge.style.transition = 'none';
         });
 
-        /* Inicialização EmulatorJS com seleção de núcleo */
+        /* Configuração dos ficheiros do repositório */
+        // ATENÇÃO: Confirma o nome exato do ficheiro .gbc no teu repositório
+        const ROM_FILE = 'Pokemon - Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc';
+
         const CDN_BASES = [
             'https://cdn.emulatorjs.org/stable/data/',
             'https://cdn.emulatorjs.org/latest/data/'
         ];
 
-        function launchEmulator(coreName = 'gbc', cdnIndex = 0) {
+        function launchEmulator(coreName = 'gambatte', cdnIndex = 0) {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
 
@@ -549,9 +549,15 @@
             container.style.display = 'block';
             gameDiv.innerHTML = '';
 
-            // Remove loader anterior se existir
+            // Limpa variáveis antigas e loader anterior
             const oldLoader = document.getElementById('ejs-loader-script');
             if (oldLoader) oldLoader.remove();
+
+            Object.keys(window).forEach((key) => {
+                if (key.startsWith('EJS_')) {
+                    delete window[key];
+                }
+            });
 
             window.EJS_player = '#game';
             window.EJS_core = coreName;
@@ -559,7 +565,7 @@
             window.EJS_color = '#c99a10';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = CDN_BASES[cdnIndex] || CDN_BASES[0];
-            window.EJS_gameUrl = 'Pokemon%20-%20Gold%20Version.gbc';
+            window.EJS_gameUrl = encodeURI(ROM_FILE);
 
             const script = document.createElement('script');
             script.id = 'ejs-loader-script';
@@ -576,7 +582,7 @@
         }
 
         document.getElementById('play-btn').addEventListener('click', function() {
-            launchEmulator('gbc', 0);
+            launchEmulator('gambatte', 0);
         });
 
         document.querySelectorAll('[data-core]').forEach((btn) => {
@@ -586,12 +592,9 @@
         });
 
         document.getElementById('back-btn').addEventListener('click', () => {
-            document.getElementById('game-container').style.display = 'none';
-            document.getElementById('game').innerHTML = '';
-            document.getElementById('header-bar').style.display = '';
-            document.getElementById('game-card').style.display = '';
+            window.location.reload();
         });
     </script>
 
 </body>
-</html> atualize o html com esses arquivos 
+</html>
