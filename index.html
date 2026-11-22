@@ -315,6 +315,42 @@
             overflow: hidden;
         }
 
+        /* Barra flutuante de controlo / troca de núcleo */
+        #emu-toolbar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .emu-bar-group {
+            display: flex;
+            gap: 6px;
+            pointer-events: auto;
+            flex-wrap: wrap;
+        }
+
+        .emu-btn {
+            background: rgba(25, 25, 25, 0.88);
+            color: #f5d76e;
+            border: 1px solid rgba(212, 175, 55, 0.55);
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .emu-btn:hover {
+            background: rgba(55, 45, 15, 0.95);
+        }
+
         /* Tela ampliada no celular vertical */
         @media screen and (max-width: 768px) {
 
@@ -456,6 +492,16 @@
 
     <!-- Tela do jogo -->
     <div id="game-container">
+        <div id="emu-toolbar">
+            <div class="emu-bar-group">
+                <button type="button" class="emu-btn" id="back-btn">← Voltar</button>
+            </div>
+            <div class="emu-bar-group">
+                <button type="button" class="emu-btn" data-core="gbc">Core: GBC</button>
+                <button type="button" class="emu-btn" data-core="gambatte">Core: Gambatte</button>
+                <button type="button" class="emu-btn" data-core="mgba">Core: mGBA</button>
+            </div>
+        </div>
         <div id="game"></div>
     </div>
 
@@ -488,29 +534,62 @@
             cartridge.style.transition = 'none';
         });
 
-        /* Inicialização EmulatorJS */
-        document.getElementById('play-btn').addEventListener('click', function() {
+        /* Inicialização EmulatorJS com seleção de núcleo */
+        const CDN_BASES = [
+            'https://cdn.emulatorjs.org/stable/data/',
+            'https://cdn.emulatorjs.org/latest/data/'
+        ];
 
+        function launchEmulator(coreName = 'gbc', cdnIndex = 0) {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
 
             const container = document.getElementById('game-container');
+            const gameDiv = document.getElementById('game');
             container.style.display = 'block';
+            gameDiv.innerHTML = '';
+
+            // Remove loader anterior se existir
+            const oldLoader = document.getElementById('ejs-loader-script');
+            if (oldLoader) oldLoader.remove();
 
             window.EJS_player = '#game';
-            window.EJS_core = 'gbc';
+            window.EJS_core = coreName;
             window.EJS_gameName = 'Pokemon - Gold Version';
             window.EJS_color = '#c99a10';
             window.EJS_startOnLoaded = true;
-            window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-
+            window.EJS_pathtodata = CDN_BASES[cdnIndex] || CDN_BASES[0];
             window.EJS_gameUrl = 'Pokemon%20-%20Gold%20Version.gbc';
 
             const script = document.createElement('script');
-            script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+            script.id = 'ejs-loader-script';
+            script.src = window.EJS_pathtodata + 'loader.js';
             script.async = true;
 
+            script.onerror = () => {
+                if (cdnIndex + 1 < CDN_BASES.length) {
+                    launchEmulator(coreName, cdnIndex + 1);
+                }
+            };
+
             document.body.appendChild(script);
+        }
+
+        document.getElementById('play-btn').addEventListener('click', function() {
+            launchEmulator('gbc', 0);
+        });
+
+        document.querySelectorAll('[data-core]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                launchEmulator(btn.getAttribute('data-core'), 0);
+            });
+        });
+
+        document.getElementById('back-btn').addEventListener('click', () => {
+            document.getElementById('game-container').style.display = 'none';
+            document.getElementById('game').innerHTML = '';
+            document.getElementById('header-bar').style.display = '';
+            document.getElementById('game-card').style.display = '';
         });
     </script>
 
