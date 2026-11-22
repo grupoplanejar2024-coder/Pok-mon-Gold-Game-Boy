@@ -1,82 +1,82 @@
-<!TIPO DE MÉDICO HTML>
-<HTML língua="pt-pt">
-<cabeça>
-    <meta conjunto de caracteres="UTF-8">
-    <meta nome="janela de visualização" conteúdo="largura=largura do dispositivo, escala inicial=1,0, escala máxima=1,0, escalável pelo usuário=não">
-    <título>Pokémon: Versão Ouro - Kubo Touch</título>
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pokémon: Gold Version - Kubo Touch</title>
 
-    <estilo>
-        *, *::antes, *::depois {
-            dimensionamento de caixa: caixa de fronteira;
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
-        corpo, HTML {
-            marginal: 0;
-            enchimento: 0;
-            largura: 100%;
-            altura mínima: 100%;
-            cor de fundo: #121212;
-            cor: #fff;
-            família de fontes: Arial, sem serifa;
-            exibir: flexionar;
-            direção flexível: coluna;
-            alinhar itens: centro;
-            justificar-conteúdo: centro;
-            transbordamento-x: oculto;
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background-color: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
         }
 
-        cabeçalho {
-            posição: absoluto;
-            topo: 0;
-            esquerda: 0;
-            largura: 100%;
-            alinhamento de texto: centro;
-            enchimento: 15px;
-            fundo: #1e1e1e;
-            índice z: 5;
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: #1e1e1e;
+            z-index: 5;
         }
 
-        .distintivo {
-            fundo: #333333;
-            cor: #fff;
-            enchimento: 4px 12px;
-            raio de borda: 20px;
-            peso da fonte: negrito;
-            tamanho da fonte: 14px;
-            fronteira: 1px sólido #555;
+        .badge {
+            background: #333333;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid #555;
         }
 
         #game-card {
-            largura: 100%;
-            largura máxima: 440px;
-            marginal: 80px 20px 20px 20px;
-            fundo: #1e1e1e;
-            raio de borda: 12px;
-            transbordar: oculto;
-            sombra de caixa: 0 10 px 30 px RGBA(0,0,0,0,7);
-            perspectiva: 1000 px;
+            width: 100%;
+            max-width: 440px;
+            margin: 80px 20px 20px 20px;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            perspective: 1000px;
         }
 
         /* Cartucho 3D */
-        .embalagem de cartucho {
-            largura: 100%;
-            enchimento: 25 px 10 px 15px 10 px;
-            exibir: flexionar;
-            justificar-conteúdo: centro;
-            alinhar itens: centro;
-            transformar estilo: preservar-3d;
-            transição: transformar 0,1s flexibilização;
-            cursor: ponteiro;
+        .cartridge-wrapper {
+            width: 100%;
+            padding: 25px 10px 15px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            cursor: pointer;
         }
 
         /* Corpo do cartucho Game Boy Color Dourado */
-        .corpo do carrinho GB {
-            largura: 240 px;
-            altura: 274 px;
-            posição: relativo;
-            fundo: gradiente linear(180 graus, #e5be3c 0%, #a67c00 100%);
-            raio de borda: 8px 6px 6px 6px;
-            caminho do clipe: polígono(
+        .gb-cart-body {
+            width: 240px;
+            height: 274px;
+            position: relative;
+            background: linear-gradient(180deg, #e5be3c 0%, #a67c00 100%);
+            border-radius: 8px 6px 6px 6px;
+            clip-path: polygon(
                 0 0,
                 calc(100% - 22px) 0,
                 calc(100% - 22px) 16px,
@@ -85,13 +85,13 @@
                 0 100%
             );
             box-shadow:
-                inserir 0 2px 3px rgba(255,244,175,0.55),
-                inserir 0 -4px 7px rgba(66,46,0,0.55),
-                inserir 3px 0 4px rgba(255,235,140,0.3),
-                inserir -3px 0 4px rgba(66,46,0,0.5);
-            display: flexionar;
-            flex-direction: coluna;
-            align-items: centro;
+                inset 0 2px 3px rgba(255,244,175,0.55),
+                inset 0 -4px 7px rgba(66,46,0,0.55),
+                inset 3px 0 4px rgba(255,235,140,0.3),
+                inset -3px 0 4px rgba(66,46,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 16px 0 10px 0;
             transform: translateZ(20px);
             filter: drop-shadow(0 15px 22px rgba(0,0,0,0.75));
@@ -102,9 +102,9 @@
             width: 100%;
             height: 40px;
             padding: 0 14px;
-            display: flexionar;
-            align-items: centro;
-            justify-content: centro;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gb-logo-oval {
@@ -113,26 +113,26 @@
             background: linear-gradient(180deg, #b88b06 0%, #cfa012 100%);
             border-radius: 18px;
             box-shadow:
-                inserir 0 2px 4px rgba(56,38,0,0.6),
+                inset 0 2px 4px rgba(56,38,0,0.6),
                 0 1px 1px rgba(255,242,165,0.4);
-            display: flexionar;
-            align-items: centro;
-            justify-content: centro;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gb-logo-text {
             font-size: 11px;
             font-weight: 900;
-            font-style: itálico;
+            font-style: italic;
             letter-spacing: 0.4px;
             color: #6b4d00;
             text-shadow:
                 0 1px 0 rgba(255,240,160,0.45),
                 0 -1px 0 rgba(45,30,0,0.45);
-            white-space: agorarap;
+            white-space: nowrap;
         }
 
-        .gb-logo-text pequeno {
+        .gb-logo-text small {
             font-style: normal;
             font-size: 7px;
             font-weight: 800;
@@ -148,65 +148,65 @@
             background: #8f6a00;
             border-radius: 6px;
             box-shadow:
-                inserir 0 2px 4px rgba(48,32,0,0.65),
+                inset 0 2px 4px rgba(48,32,0,0.65),
                 0 1px 1px rgba(255,240,160,0.35);
-            display: flexionar;
+            display: flex;
         }
 
         .gb-label-sticker {
             width: 100%;
             height: 100%;
             border-radius: 4px;
-            overflow: oculto;
-            position: relativo;
-            display: flexionar;
+            overflow: hidden;
+            position: relative;
+            display: flex;
             background: #c99a10;
-            border: 1px sólido #4d3700;
+            border: 1px solid #4d3700;
         }
 
         /* Capa centralizada */
         .gb-sticker-art {
             width: 100%;
             height: 100%;
-            position: relativo;
+            position: relative;
             background-color: #c99a10;
-            overflow: oculto;
-            display: flexionar;
-            align-items: centro;
-            justify-content: centro;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gb-sticker-art img {
             width: 100%;
             height: 100%;
             max-width: 100%;
-            object-fit: cobrir;
-            object-position: centro;
-            transform: nenhum;
-            image-rendering: carro;
+            object-fit: contain;
+            object-position: center;
+            transform: none;
+            image-rendering: auto;
             filter: contrast(1.04) saturate(1.06);
-            backface-visibility: oculto;
-            display: bloquear;
+            backface-visibility: hidden;
+            display: block;
         }
 
         /* Reflexo na etiqueta */
         .gb-label-sticker::after {
             content: '';
-            position: absoluto;
+            position: absolute;
             top: 0;
             left: -120%;
             width: 65%;
             height: 100%;
             background: linear-gradient(
                 90deg,
-                transparente,
+                transparent,
                 rgba(255,255,255,0.25),
-                transparente
+                transparent
             );
             transform: skewX(-25deg);
-            transition: esquerda 0.6s facilidade;
+            transition: left 0.6s ease;
             z-index: 3;
-            pointer-events: nenhum;
+            pointer-events: none;
         }
 
         .gb-cart-body:hover .gb-label-sticker::after {
@@ -218,9 +218,9 @@
             margin-top: 8px;
             width: 0;
             height: 0;
-            border-left: 15px sólido transparente;
-            border-right: 15px sólido transparente;
-            border-top: 15px sólido #9c7400;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #9c7400;
             filter: drop-shadow(0 1px 0 rgba(255,240,160,0.35));
         }
 
@@ -237,9 +237,9 @@
         }
 
         .meta-info {
-            display: flexionar;
-            flex-wrap: embrulhar;
-            lacuna: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 15px;
             font-size: 13px;
             color: #aaa;
@@ -265,21 +265,21 @@
 
         /* Botão jogar */
         .btn-play {
-            display: bloquear;
+            display: block;
             width: 100%;
             padding: 16px;
             background: #2b2b2b;
             color: #fff;
-            border: 1px sólido #555;
+            border: 1px solid #555;
             border-radius: 8px;
-            font-weight: negrito;
+            font-weight: bold;
             font-size: 18px;
-            cursor: ponteiro;
-            text-align: centro;
-            outline: nenhum;
-            position: relativo;
+            cursor: pointer;
+            text-align: center;
+            outline: none;
+            position: relative;
             z-index: 10;
-            transition: antecedentes 0.2s, transformar 0.1s;
+            transition: background 0.2s, transform 0.1s;
         }
 
         .btn-play:hover {
@@ -294,57 +294,57 @@
 
         /* Emulador */
         #game-container {
-            display: nenhum;
-            position: fixo;
-            inserir: 0;
+            display: none;
+            position: fixed;
+            inset: 0;
             width: 100vw;
             height: 100vh;
             height: 100dvh;
             z-index: 99999;
             background: #000;
-            overflow: oculto;
+            overflow: hidden;
         }
 
         #game {
             width: 100%;
             height: 100%;
-            display: flexionar;
-            align-items: centro;
-            justify-content: centro;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: #000;
-            overflow: oculto;
+            overflow: hidden;
         }
 
         /* Barra flutuante de controlo / troca de núcleo */
         #emu-toolbar {
-            position: fixo;
+            position: fixed;
             top: 10px;
             left: 10px;
             right: 10px;
             z-index: 100000;
-            display: flexionar;
-            align-items: centro;
-            justify-content: espaço-entre;
-            lacuna: 8px;
-            pointer-events: nenhum;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            pointer-events: none;
         }
 
         .emu-bar-group {
-            display: flexionar;
-            lacuna: 6px;
-            pointer-events: carro;
-            flex-wrap: embrulhar;
+            display: flex;
+            gap: 6px;
+            pointer-events: auto;
+            flex-wrap: wrap;
         }
 
         .emu-btn {
             background: rgba(25, 25, 25, 0.88);
             color: #f5d76e;
-            border: 1px sólido rgba(212, 175, 55, 0.55);
+            border: 1px solid rgba(212, 175, 55, 0.55);
             border-radius: 6px;
             padding: 6px 10px;
             font-size: 12px;
-            font-weight: negrito;
-            cursor: ponteiro;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         .emu-btn:hover {
@@ -352,38 +352,38 @@
         }
 
         /* Tela ampliada no celular vertical */
-        @media tela and (max-width: 768px) {
+        @media screen and (max-width: 768px) {
 
             #game-container {
                 width: 100vw;
                 height: 100vh;
                 height: 100dvh;
                 background: #000;
-                overflow: oculto;
+                overflow: hidden;
             }
 
             #game {
                 width: 100vw !important;
                 height: 100dvh !important;
-                display: flexionar;
-                align-items: centro;
-                justify-content: centro;
-                overflow: oculto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
             }
 
             #game canvas {
                 width: 100vw !important;
-                height: carro !important;
+                height: auto !important;
                 max-width: 100vw !important;
                 max-height: 90dvh !important;
-                proporção do aspecto: 10 / 9;
-                object-fit: recipiente;
-                display: bloquear;
+                aspect-ratio: 10 / 9;
+                object-fit: contain;
+                display: block;
             }
         }
 
         /* Celular horizontal */
-        @media tela and (max-width: 768px) and (orientation: paisagem) {
+        @media screen and (max-width: 768px) and (orientation: landscape) {
 
             #game-container {
                 width: 100vw;
@@ -396,12 +396,12 @@
             }
 
             #game canvas {
-                width: carro !important;
+                width: auto !important;
                 height: 100dvh !important;
                 max-width: 100vw !important;
                 max-height: 100dvh !important;
-                proporção do aspecto: 10 / 9;
-                object-fit: recipiente;
+                aspect-ratio: 10 / 9;
+                object-fit: contain;
             }
         }
 
@@ -423,7 +423,7 @@
 <body>
 
     <header id="header-bar">
-        <span class="badge">TOQUE KUBO</span>
+        <span class="badge">KUBO TOUCH</span>
     </header>
 
     <div id="game-card">
@@ -437,7 +437,7 @@
                 <div class="gb-top-band">
                     <div class="gb-logo-oval">
                         <span class="gb-logo-text">
-                            Nintendo GAME BOY<small>COR</small>
+                            Nintendo GAME BOY<small>COLOR</small>
                         </span>
                     </div>
                 </div>
@@ -447,7 +447,6 @@
                     <div class="gb-label-sticker">
                         <div class="gb-sticker-art">
                             <img
-                                id="cartridge-cover-img"
                                 src="4304682-pokemon-gold-version-game-boy-color-front-cover.jpg"
                                 alt="Capa Pokémon Gold Version"
                             >
@@ -464,7 +463,7 @@
         <!-- Informações do jogo -->
         <div class="content">
 
-            <h1>Pokémon: Versão Ouro</h1>
+            <h1>Pokémon: Gold Version</h1>
 
             <div class="meta-info">
                 <span>🎮 1 Jogador</span>
@@ -473,8 +472,8 @@
             </div>
 
             <p class="description">
-                Explore a região de Johto com Chikorita, Cyndaquil ou Totodile,
-                enfrentar os nossos ginásios e descobrir o empréstimo Ho-Oh rum à
+                Explora a região de Johto com Chikorita, Cyndaquil ou Totodile,
+                enfrenta os oito ginásios e descobre o lendário Ho-Oh rumo à
                 Liga Pokémon.
             </p>
 
@@ -498,9 +497,9 @@
                 <button type="button" class="emu-btn" id="back-btn">← Voltar</button>
             </div>
             <div class="emu-bar-group">
-                <button type="button" class="emu-btn" data-core="gbc">Núcleo: GBC</button>
-                <button type="button" class="emu-btn" data-core="gambatte">Núcleo: Pernas</button>
-                <button type="button" class="emu-btn" data-core="mgba">Núcleo: mGBA</button>
+                <button type="button" class="emu-btn" data-core="gbc">Core: GBC</button>
+                <button type="button" class="emu-btn" data-core="gambatte">Core: Gambatte</button>
+                <button type="button" class="emu-btn" data-core="mgba">Core: mGBA</button>
             </div>
         </div>
         <div id="game"></div>
@@ -535,39 +534,13 @@
             cartridge.style.transition = 'none';
         });
 
-        /* ROM GBC carregada a partir do ficheiro anexado */
-        const ROM_FALLBACK_URL = 'Pokemon%20-%20Gold%20Version.gbc';
-        let romBlobUrl = null;
-
-        // Nota: ao hospedar no GitHub Pages, mantenha o ficheiro
-        // "4304682-pokemon-gold-version-game-boy-color-front-cover.jpg"
-        // e a ROM na mesma pasta do HTML caso não estejam embutidos.
-        async function getRomUrl() {
-            if (romBlobUrl) return romBlobUrl;
-
-            try {
-                // Tenta buscar a ROM local primeiro (útil em produção / GitHub Pages)
-                const res = await fetch(ROM_FALLBACK_URL);
-                if (res.ok) {
-                    const buf = await res.arrayBuffer();
-                    const blob = new Blob([buf], { type: 'application/octet-stream' });
-                    romBlobUrl = URL.createObjectURL(blob);
-                    return romBlobUrl;
-                }
-            } catch (_) {
-                // Ignora erro de rede e usa fallback
-            }
-
-            return ROM_FALLBACK_URL;
-        }
-
         /* Inicialização EmulatorJS com seleção de núcleo */
         const CDN_BASES = [
             'https://cdn.emulatorjs.org/stable/data/',
             'https://cdn.emulatorjs.org/latest/data/'
         ];
 
-        async function launchEmulator(coreName = 'gbc', cdnIndex = 0) {
+        function launchEmulator(coreName = 'gbc', cdnIndex = 0) {
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('game-card').style.display = 'none';
 
@@ -580,15 +553,13 @@
             const oldLoader = document.getElementById('ejs-loader-script');
             if (oldLoader) oldLoader.remove();
 
-            const romUrl = await getRomUrl();
-
             window.EJS_player = '#game';
             window.EJS_core = coreName;
             window.EJS_gameName = 'Pokemon - Gold Version';
             window.EJS_color = '#c99a10';
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = CDN_BASES[cdnIndex] || CDN_BASES[0];
-            window.EJS_gameUrl = romUrl;
+            window.EJS_gameUrl = 'Pokemon%20-%20Gold%20Version.gbc';
 
             const script = document.createElement('script');
             script.id = 'ejs-loader-script';
@@ -623,4 +594,4 @@
     </script>
 
 </body>
-</html>
+</html> atualize o html com esses arquivos 
